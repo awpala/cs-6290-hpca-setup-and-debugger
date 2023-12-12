@@ -2,7 +2,7 @@
 
 ## Document Outline
 
-This guide is comprised of the following steps:
+This guide is comprised of the following steps/sections:
 
 ```
 - Initializing the Debugger Configurations
@@ -11,6 +11,8 @@ This guide is comprised of the following steps:
 ```
 
 ***Note***: This guide ***assumes*** that the [prerequisites](./README.md#prerequisites) have been installed already. Furthermore, a setup comparable to that described in [Environment Setup](./env-setup.md) is also assumed here.
+
+***Note***: In general throughout this guide, `~` and `/home/cs6290/` (i.e., home directory of user `cs6290`) refer to the ***same*** location within the ([Linux-based](https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard)) file system of the Docker-containerized development environment.
 
 ## Initializing the Debugger Configurations
 
@@ -26,7 +28,7 @@ This will correspondingly add dropdowns in the `Run and Debug` view of VS Code, 
 
 ## Building the Source Code and Running the Debugger
 
-In the top-level `Makefile`, note that there are two primary `make` targets (via corresponding [SCons](https://scons.org/)-based build system):
+In the top-level `Makefile` (i.e., `~/sesc/Makefile`), note that there are two primary `make` targets (via corresponding [SCons](https://scons.org/)-based build system):
   * `make sesc.opt` (default, equivalent to running "bare" command `make`)
   * `make sesc.debug`
 
@@ -41,7 +43,7 @@ make
 
 ***Note***: This command may fail on the first attempt. Try re-running if ***errors*** occur (***warnings*** can be safely ignored otherwise).
 
-Additionally, be advised that all of the provided debugger configurations require the corresponding simulation app to be compiled to MIPS prior to running the debugger (i.e., via corresponding command-line flag targeting files of general form `<...>.mipseb`). The project instructions will provide corresponding simulation-app specific targets, otherwise simply run the following commands:
+Additionally, be advised that all of the provided debugger configurations require the corresponding simulation app to be compiled to MIPS prior to running the debugger (i.e., via corresponding command-line flag targeting files of general form `<...>.mipseb`). The project instructions will provide corresponding simulation-app specific targets, otherwise simply run the following commands to build all of the simulation apps simultaneously (e.g., `lu`, `raytrace`, `fmm`, etc.):
 
 ```bash
 cd ~/sesc/apps/Splash2
@@ -84,7 +86,7 @@ Additionally, note the following general ***remarks*** regarding using the debug
   * https://code.visualstudio.com/docs/cpp/launch-json-reference
   * https://code.visualstudio.com/docs/cpp/config-linux
 
-The dropdowns in the `Run and Debug` view (as demonstrated previously in this guide) are configured directly in file `/.vscode/launch.json`, which provides the corresponding "launch" configurations to populate these dropdown entries. Furthermore, sub-"tasks" can be defined via `/.vscode/tasks.json` to enhance these launch configurations; in this particular context, the tasks are defined such that the SESC app is rebuilt (for both compilation and debugging targets) immediately prior to launch of the VS Code debugger, thereby ensuring the most recently saved version of the source code is used when debugging.
+The dropdowns in the `Run and Debug` view of VS Code (as demonstrated previously in this guide) are configured directly in file `/.vscode/launch.json`, which provides the corresponding "launch" configurations to populate these dropdown entries. Furthermore, sub-"tasks" can be defined via `/.vscode/tasks.json` to enhance these launch configurations; in this particular context, the tasks are defined such that the old report is deleted and then the SESC app is rebuilt (for both compilation and debugging targets), immediately prior to launch of the VS Code debugger, thereby ensuring the most recently saved version of the source code is used when debugging.
 
 ***Note***: For demonstration purposes, this section will examine the "benchmarks" configurations group, however, this information is applicable to the other groups and launch configurations, without a corresponding loss of generality.
 
