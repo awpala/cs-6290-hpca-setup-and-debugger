@@ -1,0 +1,577 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    // Benchmark configs
+    {
+      "name": "Debug Benchmark lu 256x256",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "~/sesc/sesc.debug",
+      "args": [
+        "-fn256.rpt",
+        "-c",
+        "~/sesc/confs/cmp4-noc.conf",
+        "-olu.out",
+        "-elu.err",
+        "lu.mipseb",
+        "-n256",
+        "-p1"
+      ],
+      "stopAtEntry": true,
+      "cwd": "~/sesc/apps/Splash2/lu",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "preLaunchTask": "rebuild lu 256x256", // see `tasks.json`
+      "presentation": {
+        "hidden": false,
+        "group": "benchmark",
+        "order": 1
+      },
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "Debug Benchmark fmm (-p1, 4 cores)",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "~/sesc/sesc.debug",
+      "args": [
+        "-f",
+        "Share",
+        "-c",
+        "~/sesc/confs/cmp4-noc.conf",
+        "-iInput/input.256",
+        "-ofmm.out",
+        "-efmm.err",
+        "fmm.mipseb",
+        "-p",
+        "1",
+      ],
+      "stopAtEntry": true,
+      "cwd": "~/sesc/apps/Splash2/fmm",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "preLaunchTask": "rebuild fmm -p1/-p4/-p16", // see `tasks.json`
+      "presentation": {
+        "hidden": false,
+        "group": "benchmark",
+        "order": 2
+      },
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "Debug Benchmark fmm (-p4, 4 cores)",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "~/sesc/sesc.debug",
+      "args": [
+        "-f",
+        "Share",
+        "-c",
+        "~/sesc/confs/cmp4-noc.conf",
+        "-iInput/input.256",
+        "-ofmm.out",
+        "-efmm.err",
+        "fmm.mipseb",
+        "-p",
+        "4",
+      ],
+      "stopAtEntry": true,
+      "cwd": "~/sesc/apps/Splash2/fmm",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "preLaunchTask": "rebuild fmm -p1/-p4/-p16", // see `tasks.json`
+      "presentation": {
+        "hidden": false,
+        "group": "benchmark",
+        "order": 3
+      },
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "Debug Benchmark fmm (-p16, 16 cores)",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "~/sesc/sesc.debug",
+      "args": [
+        "-f",
+        "Share",
+        "-c",
+        "~/sesc/confs/cmp16-noc.conf", // NOTE: Uses different config file here (16 cores)!
+        "-iInput/input.256",
+        "-ofmm.out",
+        "-efmm.err",
+        "fmm.mipseb",
+        "-p",
+        "16",
+      ],
+      "stopAtEntry": true,
+      "cwd": "~/sesc/apps/Splash2/fmm",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "preLaunchTask": "rebuild fmm -p1/-p4/-p16", // see `tasks.json`
+      "presentation": {
+        "hidden": false,
+        "group": "benchmark",
+        "order": 4
+      },
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    // Project 1 Part 3 configs
+    {
+      "name": "Debug PRJ1 Part 3 raytrace (Hybrid)",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "~/sesc/sesc.debug",
+      "args": [
+        "-f",
+        "HyPart3",
+        "-c",
+        "~/sesc/confs/cmp4-noc.conf",
+        "-ort.out",
+        "-ert.err",
+        "raytrace.mipseb",
+        "-m128",
+        "Input/reduced.env"
+      ],
+      "stopAtEntry": true,
+      "cwd": "~/sesc/apps/Splash2/raytrace",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "preLaunchTask": "rebuild raytrace (Hybrid)", // see `tasks.json`
+      "presentation": {
+        "hidden": false,
+        "group": "project-01",
+        "order": 1
+      },
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "Debug PRJ1 Part 3 raytrace (NotTaken)",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "~/sesc/sesc.debug",
+      "args": [
+        "-f",
+        "NTPart3",
+        "-c",
+        "~/sesc/confs/cmp4-noc.conf",
+        "-ort.out",
+        "-ert.err",
+        "raytrace.mipseb",
+        "-m128",
+        "Input/reduced.env"
+      ],
+      "stopAtEntry": true,
+      "cwd": "~/sesc/apps/Splash2/raytrace",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "preLaunchTask": "rebuild raytrace (NotTaken)", // see `tasks.json`
+      "presentation": {
+        "hidden": false,
+        "group": "project-01",
+        "order": 2
+      },
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    // Project 2 Part 2 configs
+    {
+      "name": "Debug PRJ2 Part 2 fmm (L1NXLRU)",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "~/sesc/sesc.debug",
+      "args": [
+        "-f",
+        "L1NXLRU",
+        "-c",
+        "~/sesc/confs/cmp4-noc.conf",
+        "-iInput/input.256",
+        "-ofmm.out",
+        "-efmm.err",
+        "fmm.mipseb",
+        "-p",
+        "1"
+      ],
+      "stopAtEntry": true,
+      "cwd": "~/sesc/apps/Splash2/fmm",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "preLaunchTask": "rebuild fmm files (L1NXLRU)", // see `tasks.json`
+      "presentation": {
+        "hidden": false,
+        "group": "project-02",
+        "order": 1
+      },
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    // Project 2 Part 3 configs
+    {
+      "name": "Debug PRJ2 Part 3 fmm (DefLRU)",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "~/sesc/sesc.debug",
+      "args": [
+        "-f",
+        "DefLRU",
+        "-c",
+        "~/sesc/confs/cmp4-noc.conf",
+        "-iInput/input.256",
+        "-ofmm.out",
+        "-efmm.err",
+        "fmm.mipseb",
+        "-p",
+        "1"
+      ],
+      "stopAtEntry": true,
+      "cwd": "~/sesc/apps/Splash2/fmm",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "preLaunchTask": "rebuild fmm files (DefLRU)", // see `tasks.json`
+      "presentation": {
+        "hidden": false,
+        "group": "project-02",
+        "order": 2
+      },
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "Debug PRJ2 Part 3 fmm (SmallLRU)",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "~/sesc/sesc.debug",
+      "args": [
+        "-f",
+        "SmallLRU",
+        "-c",
+        "~/sesc/confs/cmp4-noc.conf",
+        "-iInput/input.256",
+        "-ofmm.out",
+        "-efmm.err",
+        "fmm.mipseb",
+        "-p",
+        "1"
+      ],
+      "stopAtEntry": true,
+      "cwd": "~/sesc/apps/Splash2/fmm",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "preLaunchTask": "rebuild fmm files (SmallLRU)", // see `tasks.json`
+      "presentation": {
+        "hidden": false,
+        "group": "project-02",
+        "order": 3
+      },
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "Debug PRJ2 Part 3 fmm (DefDM)",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "~/sesc/sesc.debug",
+      "args": [
+        "-f",
+        "DefDM",
+        "-c",
+        "~/sesc/confs/cmp4-noc.conf",
+        "-iInput/input.256",
+        "-ofmm.out",
+        "-efmm.err",
+        "fmm.mipseb",
+        "-p",
+        "1"
+      ],
+      "stopAtEntry": true,
+      "cwd": "~/sesc/apps/Splash2/fmm",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "preLaunchTask": "rebuild fmm files (DefDM)", // see `tasks.json`
+      "presentation": {
+        "hidden": false,
+        "group": "project-02",
+        "order": 4
+      },
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "Debug PRJ2 Part 3 fmm (DefNXLRU)",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "~/sesc/sesc.debug",
+      "args": [
+        "-f",
+        "DefNXLRU",
+        "-c",
+        "~/sesc/confs/cmp4-noc.conf",
+        "-iInput/input.256",
+        "-ofmm.out",
+        "-efmm.err",
+        "fmm.mipseb",
+        "-p",
+        "1"
+      ],
+      "stopAtEntry": true,
+      "cwd": "~/sesc/apps/Splash2/fmm",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "preLaunchTask": "rebuild fmm files (DefNXLRU)", // see `tasks.json`
+      "presentation": {
+        "hidden": false,
+        "group": "project-02",
+        "order": 5
+      },
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    // Project 3 Part 3 configs
+    {
+      "name": "Debug PRJ3 Part 3 lu 256x256 (-p1, 16 cores)",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "~/sesc/sesc.debug",
+      "args": [
+        "-fHp1",
+        "-c",
+        "~/sesc/confs/cmp16-noc.conf",
+        "-olu.out",
+        "-elu.err",
+        "lu.mipseb",
+        "-n512",
+        "-p1",
+      ],
+      "stopAtEntry": true,
+      "cwd": "~/sesc/apps/Splash2/lu",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "preLaunchTask": "rebuild lu 256x256 -p1 files", // see `tasks.json`
+      "presentation": {
+        "hidden": false,
+        "group": "project-03",
+        "order": 1
+      },
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "Debug PRJ3 Part 3 lu 256x256 (-p4, 16 cores)",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "~/sesc/sesc.debug",
+      "args": [
+        "-fHp4",
+        "-c",
+        "~/sesc/confs/cmp16-noc.conf",
+        "-olu.out",
+        "-elu.err",
+        "lu.mipseb",
+        "-n512",
+        "-p4",
+      ],
+      "stopAtEntry": true,
+      "cwd": "~/sesc/apps/Splash2/lu",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "preLaunchTask": "rebuild lu 256x256 -p4 files", // see `tasks.json`
+      "presentation": {
+        "hidden": false,
+        "group": "project-03",
+        "order": 2
+      },
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "Debug PRJ3 Part 3 lu 256x256 (-p16, 16 cores)",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "~/sesc/sesc.debug",
+      "args": [
+        "-fHp16",
+        "-c",
+        "~/sesc/confs/cmp16-noc.conf",
+        "-olu.out",
+        "-elu.err",
+        "lu.mipseb",
+        "-n512",
+        "-p16",
+      ],
+      "stopAtEntry": true,
+      "cwd": "~/sesc/apps/Splash2/lu",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "preLaunchTask": "rebuild lu 256x256 -p16 files", // see `tasks.json`
+      "presentation": {
+        "hidden": false,
+        "group": "project-03",
+        "order": 3
+      },
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+  ]
+}

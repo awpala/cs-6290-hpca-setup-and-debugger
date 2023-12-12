@@ -1,0 +1,315 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    // General SESC tasks
+    {
+      "type": "cppbuild",
+      "label": "rebuild sesc (opt)",
+      "command": "make",
+      "args": ["sesc.opt"],
+      "options": {
+        "cwd": "~/sesc",
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "group": "build",
+      "detail": "compiler: /usr/bin/g++"
+    },
+    {
+      "type": "cppbuild",
+      "label": "rebuild sesc (debug)",
+      "command": "make",
+      "args": ["sesc.debug"],
+      "options": {
+        "cwd": "~/sesc",
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "group": "build",
+      "detail": "compiler: /usr/bin/g++"
+    },
+    // Benchmark tasks
+    {
+      "type": "cppbuild",
+      "label": "clean lu files",
+      "command": "rm",
+      "args": ["-f", "sesc_lu.mipseb.n256.rpt"],
+      "options": {
+        "cwd": "~/sesc/apps/Splash2/lu",
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "group": "build",
+      "detail": "compiler: /usr/bin/g++"
+    },
+    {
+      "label": "rebuild lu 256x256",
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "clean lu files",
+        "rebuild sesc (opt)",
+        "rebuild sesc (debug)",
+      ],
+    },
+    {
+      "type": "cppbuild",
+      "label": "clean fmm files",
+      "command": "rm",
+      "args": ["-f", "sesc_fmm.mipseb.Share"],
+      "options": {
+        "cwd": "~/sesc/apps/Splash2/fmm",
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "group": "build",
+      "detail": "compiler: /usr/bin/g++"
+    },
+    {
+      "label": "rebuild fmm -p1/-p4/-p16",
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "clean fmm files",
+        "rebuild sesc (opt)",
+        "rebuild sesc (debug)",
+      ],
+    },
+    // Project 1 Part 3 tasks
+    {
+      "type": "cppbuild",
+      "label": "clean raytrace files (Hybrid)",
+      "command": "rm",
+      "args": ["-f", "sesc_raytrace.mipseb.HyPart3"],
+      "options": {
+        "cwd": "~/sesc/apps/Splash2/raytrace",
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "group": "build",
+      "detail": "compiler: /usr/bin/g++"
+    },
+    {
+      "type": "cppbuild",
+      "label": "clean raytrace files (NotTaken)",
+      "command": "rm",
+      "args": ["-f", "sesc_raytrace.mipseb.NTPart3"],
+      "options": {
+        "cwd": "~/sesc/apps/Splash2/raytrace",
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "group": "build",
+      "detail": "compiler: /usr/bin/g++"
+    },
+    {
+      "label": "rebuild raytrace (Hybrid)",
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "clean raytrace files (Hybrid)",
+        "rebuild sesc (opt)",
+        "rebuild sesc (debug)",
+      ],
+    },
+    {
+      "label": "rebuild raytrace (NotTaken)",
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "clean raytrace files (NotTaken)",
+        "rebuild sesc (opt)",
+        "rebuild sesc (debug)",
+      ],
+    },
+    // Project 2 Part 2 tasks
+    {
+      "type": "cppbuild",
+      "label": "clean fmm files (L1NXLRU)",
+      "command": "rm",
+      "args": ["-f", "sesc_fmm.mipseb.L1NXLRU"],
+      "options": {
+        "cwd": "~/sesc/apps/Splash2/fmm",
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "group": "build",
+      "detail": "compiler: /usr/bin/g++"
+    },
+    {
+      "label": "rebuild fmm files (L1NXLRU)",
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "clean fmm files (L1NXLRU)",
+        "rebuild sesc (opt)",
+        "rebuild sesc (debug)",
+      ],
+    },
+    // Project 2 Part 3 tasks
+    {
+      "type": "cppbuild",
+      "label": "clean fmm files (DefLRU)",
+      "command": "rm",
+      "args": ["-f", "sesc_fmm.mipseb.DefLRU"],
+      "options": {
+        "cwd": "~/sesc/apps/Splash2/fmm",
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "group": "build",
+      "detail": "compiler: /usr/bin/g++"
+    },
+    {
+      "label": "rebuild fmm files (DefLRU)",
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "clean fmm files (DefLRU)",
+        "rebuild sesc (opt)",
+        "rebuild sesc (debug)",
+      ],
+    },
+    {
+      "type": "cppbuild",
+      "label": "clean fmm files (SmallLRU)",
+      "command": "rm",
+      "args": ["-f", "sesc_fmm.mipseb.SmallLRU"],
+      "options": {
+        "cwd": "~/sesc/apps/Splash2/fmm",
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "group": "build",
+      "detail": "compiler: /usr/bin/g++"
+    },
+    {
+      "label": "rebuild fmm files (SmallLRU)",
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "clean fmm files (SmallLRU)",
+        "rebuild sesc (opt)",
+        "rebuild sesc (debug)",
+      ],
+    },
+    {
+      "type": "cppbuild",
+      "label": "clean fmm files (DefDM)",
+      "command": "rm",
+      "args": ["-f", "sesc_fmm.mipseb.DefDM"],
+      "options": {
+        "cwd": "~/sesc/apps/Splash2/fmm",
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "group": "build",
+      "detail": "compiler: /usr/bin/g++"
+    },
+    {
+      "label": "rebuild fmm files (DefDM)",
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "clean fmm files (DefDM)",
+        "rebuild sesc (opt)",
+        "rebuild sesc (debug)",
+      ],
+    },
+    {
+      "type": "cppbuild",
+      "label": "clean fmm files (DefNXLRU)",
+      "command": "rm",
+      "args": ["-f", "sesc_fmm.mipseb.DefNXLRU"],
+      "options": {
+        "cwd": "~/sesc/apps/Splash2/fmm",
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "group": "build",
+      "detail": "compiler: /usr/bin/g++"
+    },
+    {
+      "label": "rebuild fmm files (DefNXLRU)",
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "clean fmm files (DefNXLRU)",
+        "rebuild sesc (opt)",
+        "rebuild sesc (debug)",
+      ],
+    },
+    // Project 3 Part 3 tasks
+    {
+      "type": "cppbuild",
+      "label": "clean lu 256x256 -p1 files",
+      "command": "rm",
+      "args": ["-f", "sesc_lu.mipseb.Hp1"],
+      "options": {
+        "cwd": "~/sesc/apps/Splash2/lu",
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "group": "build",
+      "detail": "compiler: /usr/bin/g++"
+    },
+    {
+      "label": "rebuild lu 256x256 -p1 files",
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "clean lu 256x256 -p1 files",
+        "rebuild sesc (opt)",
+        "rebuild sesc (debug)",
+      ],
+    },
+    {
+      "type": "cppbuild",
+      "label": "clean lu 256x256 -p4 files",
+      "command": "rm",
+      "args": ["-f", "sesc_lu.mipseb.Hp4"],
+      "options": {
+        "cwd": "~/sesc/apps/Splash2/lu",
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "group": "build",
+      "detail": "compiler: /usr/bin/g++"
+    },
+    {
+      "label": "rebuild lu 256x256 -p4 files",
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "clean lu 256x256 -p4 files",
+        "rebuild sesc (opt)",
+        "rebuild sesc (debug)",
+      ],
+    },
+    {
+      "type": "cppbuild",
+      "label": "clean lu 256x256 -p16 files",
+      "command": "rm",
+      "args": ["-f", "sesc_lu.mipseb.Hp16"],
+      "options": {
+        "cwd": "~/sesc/apps/Splash2/lu",
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "group": "build",
+      "detail": "compiler: /usr/bin/g++"
+    },
+    {
+      "label": "rebuild lu 256x256 -p16 files",
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "clean lu 256x256 -p16 files",
+        "rebuild sesc (opt)",
+        "rebuild sesc (debug)",
+      ],
+    },
+  ],
+}

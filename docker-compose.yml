@@ -1,0 +1,12 @@
+name: cs6290-hpca
+services:
+  sesc:
+    container_name: sesc
+    image: jsachs123/cs6290:latest
+    tty: true
+    working_dir: /home/cs6290
+    volumes:
+      - cs6290:/home/cs6290
+
+volumes:
+  cs6290:
