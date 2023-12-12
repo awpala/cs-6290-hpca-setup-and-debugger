@@ -49,7 +49,7 @@ On remote-connection into the container (it may take a minute or two to establis
 
 ***Note***: If VS Code Terminal is not present/visible, toggle it via keypress combo <code>Ctrl `</code> (backtick, directly above <code>Tab</code> key).
 
-Additionally, to set the VS Code project/workspace directory to the sesc app itself, issue the following terminal command inside of the running container (via [VS Code CLI](https://code.visualstudio.com/docs/editor/command-line#_opening-files-and-folders)):
+Additionally, to set the VS Code project/workspace directory to the `sesc` app itself, issue the following terminal command inside of the running container (via [VS Code CLI](https://code.visualstudio.com/docs/editor/command-line#_opening-files-and-folders)):
 
 ```bash
 code ~/sesc
