@@ -84,3 +84,153 @@ Additionally, note the following general ***remarks*** regarding using the debug
   * https://code.visualstudio.com/docs/cpp/launch-json-reference
   * https://code.visualstudio.com/docs/cpp/config-linux
 
+The dropdowns in the `Run and Debug` view (as demonstrated previously in this guide) are configured directly in file `/.vscode/launch.json`, which provides the corresponding "launch" configurations to populate these dropdown entries. Furthermore, sub-"tasks" can be defined via `/.vscode/tasks.json` to enhance these launch configurations; in this particular context, the tasks are defined such that the SESC app is rebuilt (for both compilation and debugging targets) immediately prior to launch of the VS Code debugger, thereby ensuring the most recently saved version of the source code is used when debugging.
+
+***Note***: For demonstration purposes, this section will examine the "benchmarks" configurations group, however, this information is applicable to the other groups and launch configurations, without a corresponding loss of generality.
+
+As a representative example, consider the first dropdown entry, `Debug Benchmark lu 256x256`, as follows:
+
+<center>
+<img src="./assets/debug-003.png" width="1080px">
+</center>
+
+This runs the following equivalent terminal command from location `~/sesc/apps/Splash2/lu`:
+
+```bash
+~/sesc/sesc.debug -fn256.rpt -c ~/sesc/confs/cmp4-noc.conf -olu.out -elu.err lu.mipseb -n256 -p1
+```
+
+via corresponding fields defined as follows (denoted below via comment `// <---`):
+
+(`/.vscode/launch.json`)
+```jsonc
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    // Benchmark configs
+    {
+      "name": "Debug Benchmark lu 256x256",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "~/sesc/sesc.debug",        // <---
+      "args": [                              // <--- (command-line arguments)
+        "-fn256.rpt",
+        "-c",
+        "~/sesc/confs/cmp4-noc.conf",
+        "-olu.out",
+        "-elu.err",
+        "lu.mipseb",
+        "-n256",
+        "-p1"
+      ],
+      "stopAtEntry": true,
+      "cwd": "~/sesc/apps/Splash2/lu",       // <--- (current working directory)
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "preLaunchTask": "rebuild lu 256x256", // see `tasks.json` <--- (prelaunch task)
+      "presentation": {                      // <--- (dropdown groups definition)
+        "hidden": false,
+        "group": "benchmark",
+        "order": 1
+      },
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    // ...
+  ],
+}
+```
+
+Furthermore, also as denoted above (i.e., via `// <---`), under setting `"presentation"`, note that this configuration is grouped under `"group": "benchmark"` and appears first in this group's list (i.e., `"order": 1`). Also note that defining the groups in this manner adds the corresponding bars/sections in the dropdown accordingly, adding an additional level of organization (i.e., rather than a "cluttered"/monolithic list of such launch configurations).
+
+With respect to the ***prelaunch task***, as denoted above, this is defined correspondingly in `/.vscode/tasks.json`. Here, the relevant tasks are as follows (excerpts included here for expediency, with other tasks omitted via `// ...` for brevity):
+
+```jsonc
+{
+  "version": "2.0.0",
+  "tasks": [
+    // General SESC tasks
+    {
+      "type": "cppbuild",
+      "label": "rebuild sesc (opt)",                // <---
+      "command": "make",
+      "args": ["sesc.opt"],
+      "options": {
+        "cwd": "/home/cs6290/sesc",
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "group": "build",
+      "detail": "compiler: /usr/bin/g++"
+    },
+    {
+      "type": "cppbuild",
+      "label": "rebuild sesc (debug)",              // <---
+      "command": "make",
+      "args": ["sesc.debug"],
+      "options": {
+        "cwd": "/home/cs6290/sesc",
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "group": "build",
+      "detail": "compiler: /usr/bin/g++"
+    },
+    // Benchmark tasks
+    {
+      "type": "cppbuild",
+      "label": "clean lu files",                    // <---
+      "command": "rm",
+      "args": ["-f", "sesc_lu.mipseb.n256.rpt"],    // <---
+      "options": {
+        "cwd": "/home/cs6290/sesc/apps/Splash2/lu", // <---
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "group": "build",
+      "detail": "compiler: /usr/bin/g++"
+    },
+    {
+      "label": "rebuild lu 256x256",                // <---
+      "dependsOrder": "sequence",
+      "dependsOn": [                                // <---
+        "clean lu files",
+        "rebuild sesc (opt)",
+        "rebuild sesc (debug)",
+      ],
+    },
+    // ...
+  ],
+}
+```
+
+Per above (with correspondingly annotated/commented `// <---`, for subsequent discussion), the ***general SESC tasks*** define the respective make targets (i.e., Bash commands `make sesc.opt` and `make sesc.debug`), both set to run from location `/home/cs6290/sesc` (i.e., `"cwd"`, the preset current working directory). However, these are not used directly as prelaunch tasks in `launch.json`, but rather constitute "sub-tasks" which are shared across other tasks accordingly.
+
+Furthermore, launch-specific sub-tasks are similarly defined, e.g., `clean lu files`, which removes the previously generated report file via the following equivalent Bash command running in location (i.e., `"cwd"`, the preset current working directory) `/home/cs6290/sesc/apps/Splash2/lu`:
+
+```bash
+rm -f sesc_lu.mipseb.n256.rpt
+```
+
+With these sub-tasks defined appropriately, the "composite" task `rebuild lu 256x256` (i.e., that which is referenced by the aforementioned launch configuration, `Debug Benchmark lu 256x256`) simply performs these sub-tasks sequentially in turn (i.e., remove the old report, compile the SESC application, and then compile the debugger version of the application) immediately prior to launching the debugger.
+
+The other launch configurations are similarly defined, with appropriately set `cwd` fields, project-task-specific report cleanups, etc.
+
+In this manner, this allows a relatively streamlined "one-push" configuration, whereby any given launch will perform the appropriate upstream tasks, thereby obviating the need to run them manually from the command line in successive iterations of debugger launches.
