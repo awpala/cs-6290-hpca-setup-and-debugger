@@ -157,7 +157,7 @@ via corresponding fields defined as follows (denoted below via comment `// <---`
 }
 ```
 
-Furthermore, also as denoted above (i.e., via `// <---`), under setting `"presentation"`, note that this configuration is grouped under `"group": "benchmark"` and appears first in this group's list (i.e., `"order": 1`). Also note that defining the groups in this manner adds the corresponding bars/sections in the dropdown accordingly, adding an additional level of organization (i.e., rather than a "cluttered"/monolithic list of such launch configurations).
+Furthermore, also as denoted above (i.e., via `// <---`), under setting `"presentation"`, note that this configuration is grouped under `"group": "benchmark"` and appears first in this group's list (i.e., `"order": 1`). Also note that defining the groups in this manner adds the corresponding bars/sections in the dropdown accordingly, thereby adding an additional level of organization (i.e., rather than a "cluttered"/monolithic list of such launch configurations).
 
 With respect to the ***prelaunch task***, as denoted above, this is defined correspondingly in `/.vscode/tasks.json`. Here, the relevant tasks are as follows (excerpts included here for expediency, with other tasks omitted via `// ...` for brevity):
 
