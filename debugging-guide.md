@@ -159,6 +159,7 @@ Furthermore, also as denoted above (i.e., via `// <---`), under setting `"presen
 
 With respect to the ***prelaunch task***, as denoted above, this is defined correspondingly in `/.vscode/tasks.json`. Here, the relevant tasks are as follows (excerpts included here for expediency, with other tasks omitted via `// ...` for brevity):
 
+(`/.vscode/tasks.json`)
 ```jsonc
 {
   "version": "2.0.0",
