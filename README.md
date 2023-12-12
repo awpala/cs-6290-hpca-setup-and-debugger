@@ -16,7 +16,7 @@ The net result is a [Docker](https://docs.docker.com/)-based development environ
 
 Prior to proceeding further, ensure that the following **dependencies** are installed locally on your client/host device:
   * [Docker Desktop](https://www.docker.com/products/docker-desktop/) (or equivalent Docker Engine) for containerization
-    * On installation, this will also provide the underlying [Docker Engine](https://docs.docker.com/engine/) and [Docker Compose](https://docs.docker.com/compose/) command line tool
+    * On installation, this will also provide the underlying [Docker Engine](https://docs.docker.com/engine/) (Linux-based) virtualization layer, and the [Docker Compose](https://docs.docker.com/compose/) command line tool
   * [VS Code](https://code.visualstudio.com/) for interaction with the source code and files
 
 ***Note***: For Windows client/host devices, when installing Docker Desktop, use the default/preselected [WSL 2](https://aka.ms/wsl) based installation settings (i.e., rather than Hyper-V). This is a Windows-specific sub-dependency which provides the underlying Linux-based virtualization layer.
