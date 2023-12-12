@@ -68,11 +68,11 @@ With the `sesc` app opened in VS Code, you should now be able to proceed with th
 As a closing remark, in order to access the files on your host OS (i.e., for submission to Canvas), this can be done via Docker Desktop itself as follows:
 
 <center>
-<img src="./assets/setup-005.png" width="800px">
+<img src="./assets/setup-005.png" width="1000px">
 </center>
 
 <center>
-<img src="./assets/setup-006.png" width="800px">
+<img src="./assets/setup-006.png" width="1000px">
 </center>
 
 The subsequent host-OS-specific file-system-navigation prompt will allow to download this as `sesc.zip` to the target host folder of choice.
