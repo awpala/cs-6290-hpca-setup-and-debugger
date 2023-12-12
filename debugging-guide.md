@@ -26,7 +26,7 @@ This will correspondingly add dropdowns in the `Run and Debug` view of VS Code, 
 
 ## Building the Source Code and Running the Debugger
 
-In the top-level `Makefile`, note that there are two primary `make` targets (via corresponding [SCONS](https://scons.org/)-based build system):
+In the top-level `Makefile`, note that there are two primary `make` targets (via corresponding [SCons](https://scons.org/)-based build system):
   * `make sesc.opt` (default, equivalent to running "bare" command `make`)
   * `make sesc.debug`
 
