@@ -13,8 +13,6 @@ This guide is comprised of the following steps:
 
 ***Note***: This guide ***assumes*** that the [prerequisites](./README.md#prerequisites) have been installed already.
 
-***Note***: In general throughout this guide, `~` and `/home/cs6290/` (i.e., home directory of user `cs6290`) refer to the ***same*** location within the ([Linux-based](https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard)) file system of the Docker-containerized development environment.
-
 ## Setting Up the Docker Environment
 
 On your local machine, either create or copy the file `docker-compose.yml` provided in this repository (note that this filename is canonical).

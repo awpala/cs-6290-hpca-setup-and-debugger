@@ -12,7 +12,7 @@ This guide is comprised of the following steps/sections:
 
 ***Note***: This guide ***assumes*** that the [prerequisites](./README.md#prerequisites) have been installed already. Furthermore, a setup comparable to that described in [Environment Setup](./env-setup.md) is also assumed here.
 
-***Note***: In general throughout this guide, `~` and `/home/cs6290/` (i.e., home directory of user `cs6290`) refer to the ***same*** location within the ([Linux-based](https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard)) file system of the Docker-containerized (or equivalent) development environment.
+***CAUTION***: While using the debugger is useful for tracing the run-time behavior of the application, it is **imperative** to ***check and validate results/outputs against the verbatim commands as given in the projects handouts***. In particular, SESC notoriously gives rise to "finicky" run-time behavior otherwise, particularly based on the length of the commands as supplied.
 
 ## Initializing the Debugger Configurations
 
@@ -28,7 +28,7 @@ This will correspondingly add dropdowns in the `Run and Debug` view of VS Code, 
 
 ## Building the Source Code and Running the Debugger
 
-In the top-level `Makefile` (i.e., `~/sesc/Makefile`), note that there are two primary `make` targets (via corresponding [SCons](https://scons.org/)-based build system):
+In the top-level `Makefile` (i.e., `/home/cs6290/sesc/Makefile`), note that there are two primary `make` targets (via corresponding [SCons](https://scons.org/)-based build system):
   * `make sesc.opt` (default, equivalent to running "bare" command `make`)
   * `make sesc.debug`
 
@@ -46,7 +46,7 @@ make
 Additionally, be advised that all of the provided debugger configurations require the corresponding simulation app to be compiled to MIPS prior to running the debugger (i.e., via corresponding command-line flag targeting files of general form `<...>.mipseb`). The project instructions will provide corresponding simulation-app specific targets, otherwise simply run the following commands to build all of the simulation apps simultaneously (e.g., `lu`, `raytrace`, `fmm`, etc.):
 
 ```bash
-cd ~/sesc/apps/Splash2
+cd /home/cs6290/sesc/apps/Splash2
 ```
 ```bash
 make
@@ -96,10 +96,10 @@ As a representative example, consider the first dropdown entry, `Debug Benchmark
 <img src="./assets/debug-003.png" width="1080px">
 </center>
 
-This runs the following equivalent terminal command from location `~/sesc/apps/Splash2/lu`:
+This runs the following equivalent terminal command from location `/home/cs6290/sesc/apps/Splash2/lu`:
 
 ```bash
-~/sesc/sesc.debug -fn256.rpt -c ~/sesc/confs/cmp4-noc.conf -olu.out -elu.err lu.mipseb -n256 -p1
+/home/cs6290/sesc/sesc.debug -fn256.rpt -c /home/cs6290/sesc/confs/cmp4-noc.conf -olu.out -elu.err lu.mipseb -n256 -p1
 ```
 
 via corresponding fields defined as follows (denoted below via comment `// <---`):
@@ -117,11 +117,11 @@ via corresponding fields defined as follows (denoted below via comment `// <---`
       "name": "Debug Benchmark lu 256x256",
       "type": "cppdbg",
       "request": "launch",
-      "program": "~/sesc/sesc.debug",        // <---
+      "program": "/home/cs6290/sesc/sesc.debug",        // <---
       "args": [                              // <--- (command-line arguments)
         "-fn256.rpt",
         "-c",
-        "~/sesc/confs/cmp4-noc.conf",
+        "/home/cs6290/sesc/confs/cmp4-noc.conf",
         "-olu.out",
         "-elu.err",
         "lu.mipseb",
@@ -129,7 +129,7 @@ via corresponding fields defined as follows (denoted below via comment `// <---`
         "-p1"
       ],
       "stopAtEntry": true,
-      "cwd": "~/sesc/apps/Splash2/lu",       // <--- (current working directory)
+      "cwd": "/home/cs6290/sesc/apps/Splash2/lu",       // <--- (current working directory)
       "environment": [],
       "externalConsole": false,
       "MIMode": "gdb",

@@ -30,6 +30,8 @@ Additionally, ensure the following VS Code extensions are installed:
 
 Relevant files provided in this repository are referenced in subsequent sections/links. For expediency, you may either pull down or download this entire repository in order to access these files in a single/consolidated manner, or otherwise simply transfer these files on an ad hoc basis as needed.
 
+***Note***: In general throughout this repo, `~` and `/home/cs6290/` (i.e., home directory of user `cs6290`) refer to the ***same*** location within the ([Linux-based](https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard)) file system of the Docker-containerized (or equivalent) development environment.
+
 ## Environment Setup
 
 On completed installation of the prerequisites, see the [Environment Setup](./env-setup.md) for further instructions regarding instantiating the Docker-based development environment, which contains a containerized version of the SESC app and related development tools (i.e., compiler and debugger).

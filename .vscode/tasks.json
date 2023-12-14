@@ -37,7 +37,7 @@
       "command": "rm",
       "args": ["-f", "sesc_lu.mipseb.n256.rpt"],
       "options": {
-        "cwd": "~/sesc/apps/Splash2/lu",
+        "cwd": "/home/cs6290/sesc/apps/Splash2/lu",
       },
       "problemMatcher": [
         "$gcc"
@@ -60,7 +60,7 @@
       "command": "rm",
       "args": ["-f", "sesc_fmm.mipseb.Share"],
       "options": {
-        "cwd": "~/sesc/apps/Splash2/fmm",
+        "cwd": "/home/cs6290/sesc/apps/Splash2/fmm",
       },
       "problemMatcher": [
         "$gcc"
@@ -84,7 +84,7 @@
       "command": "rm",
       "args": ["-f", "sesc_raytrace.mipseb.HyPart3"],
       "options": {
-        "cwd": "~/sesc/apps/Splash2/raytrace",
+        "cwd": "/home/cs6290/sesc/apps/Splash2/raytrace",
       },
       "problemMatcher": [
         "$gcc"
@@ -98,7 +98,7 @@
       "command": "rm",
       "args": ["-f", "sesc_raytrace.mipseb.NTPart3"],
       "options": {
-        "cwd": "~/sesc/apps/Splash2/raytrace",
+        "cwd": "/home/cs6290/sesc/apps/Splash2/raytrace",
       },
       "problemMatcher": [
         "$gcc"
@@ -131,7 +131,7 @@
       "command": "rm",
       "args": ["-f", "sesc_fmm.mipseb.L1NXLRU"],
       "options": {
-        "cwd": "~/sesc/apps/Splash2/fmm",
+        "cwd": "/home/cs6290/sesc/apps/Splash2/fmm",
       },
       "problemMatcher": [
         "$gcc"
@@ -155,7 +155,7 @@
       "command": "rm",
       "args": ["-f", "sesc_fmm.mipseb.DefLRU"],
       "options": {
-        "cwd": "~/sesc/apps/Splash2/fmm",
+        "cwd": "/home/cs6290/sesc/apps/Splash2/fmm",
       },
       "problemMatcher": [
         "$gcc"
@@ -178,7 +178,7 @@
       "command": "rm",
       "args": ["-f", "sesc_fmm.mipseb.SmallLRU"],
       "options": {
-        "cwd": "~/sesc/apps/Splash2/fmm",
+        "cwd": "/home/cs6290/sesc/apps/Splash2/fmm",
       },
       "problemMatcher": [
         "$gcc"
@@ -201,7 +201,7 @@
       "command": "rm",
       "args": ["-f", "sesc_fmm.mipseb.DefDM"],
       "options": {
-        "cwd": "~/sesc/apps/Splash2/fmm",
+        "cwd": "/home/cs6290/sesc/apps/Splash2/fmm",
       },
       "problemMatcher": [
         "$gcc"
@@ -224,7 +224,7 @@
       "command": "rm",
       "args": ["-f", "sesc_fmm.mipseb.DefNXLRU"],
       "options": {
-        "cwd": "~/sesc/apps/Splash2/fmm",
+        "cwd": "/home/cs6290/sesc/apps/Splash2/fmm",
       },
       "problemMatcher": [
         "$gcc"
@@ -248,7 +248,7 @@
       "command": "rm",
       "args": ["-f", "sesc_lu.mipseb.Hp1"],
       "options": {
-        "cwd": "~/sesc/apps/Splash2/lu",
+        "cwd": "/home/cs6290/sesc/apps/Splash2/lu",
       },
       "problemMatcher": [
         "$gcc"
@@ -271,7 +271,7 @@
       "command": "rm",
       "args": ["-f", "sesc_lu.mipseb.Hp4"],
       "options": {
-        "cwd": "~/sesc/apps/Splash2/lu",
+        "cwd": "/home/cs6290/sesc/apps/Splash2/lu",
       },
       "problemMatcher": [
         "$gcc"
@@ -294,7 +294,7 @@
       "command": "rm",
       "args": ["-f", "sesc_lu.mipseb.Hp16"],
       "options": {
-        "cwd": "~/sesc/apps/Splash2/lu",
+        "cwd": "/home/cs6290/sesc/apps/Splash2/lu",
       },
       "problemMatcher": [
         "$gcc"
